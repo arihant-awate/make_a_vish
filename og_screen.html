@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Make a Vish - Game</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Freckle+Face&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/phaser/3.70.0/phaser-arcade-physics.min.js" integrity="sha512-HUbl7YU9UJEwoU8NQpzzBxd+I+qSbyiUKojO4RHfGzIadFeNcDcHc5nAINtX8dsHAXJn/2pqhwwiEWFXl+6OgA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>
+        #gameContainer {
+            display: none; /* Hide the game container initially */
+        }
+    </style>
+</head>
+<body>
+    <div id="gameWrapper">
+        <div id="scoreContainer">
+            <span id="scoreNumber">0</span>
+        </div>
+
+        <div id="gameControlPanel">
+            <div id="gameMessage">
+                <img src="./assets/apple.png"><span id="finalScore">0</span>
+            </div>
+            <div><button id="startGame">Play</button></div>
+        </div>
+
+        <!-- Image that becomes invisible when spacebar is pressed -->
+        <img id="overlayImage" src="./images/rules.svg" alt="Overlay Image" class="overlay">
+
+        <!-- Container for Phaser game -->
+        <div id="gameContainer"></div>
+
+        <!-- Home Button -->
+        <button id="homeButton" class="cornerButton">
+            <img src="./assets/home_icon.svg" alt="Home">
+        </button>
+
+        <!-- Info Button -->
+        <button id="infoButton" class="cornerButton">
+            <img src="./assets/info_icon.svg" alt="Info">
+        </button>
+    </div>
+
+    <!-- Background Music -->
+    <audio id="bgMusic" src="./sounds/og_music.mp3" loop></audio>
+
+    <script>
+        // JavaScript to handle the spacebar press and start the Phaser game
+        document.addEventListener('DOMContentLoaded', () => {
+            const overlayImage = document.getElementById('overlayImage');
+            const gameContainer = document.getElementById('gameContainer');
+            const bgMusic = document.getElementById('bgMusic');
+            let gameStarted = false;
+
+            document.addEventListener('keydown', function(event) {
+                if (event.code === 'Space' && !gameStarted) {
+                    gameStarted = true;
+                    bgMusic.volume = 0.3;
+                    // Start background music
+                    bgMusic.play();
+
+                    // Fade out the overlay image
+                    overlayImage.style.opacity = '0';
+
+                    // Wait for the fade-out transition to complete before starting the game
+                    setTimeout(() => {
+                        overlayImage.style.display = 'none';
+                        gameContainer.style.display = 'block';
+
+                        // Start the Phaser game
+                        startPhaserGame();
+                    }, 1000); // Matches the transition duration (1s)
+                }
+            });
+
+            const homeButton = document.getElementById('homeButton');
+            homeButton.addEventListener('click', () => {
+                window.location.href = 'index.html';
+            });
+
+            const infoButton = document.getElementById('infoButton');
+            infoButton.addEventListener('click', () => {
+                window.location.href = 'og_screen.html'; // Navigate to og_screen.html when the Info button is clicked
+            });
+        });
+
+        function startPhaserGame() {
+            const config = {
+                type: Phaser.AUTO,
+                width: window.innerWidth,
+                height: window.innerHeight,
+                physics: {
+                    default: 'arcade',
+                    arcade: {
+                        gravity: { y: 0 },
+                    },
+                },
+                render: {
+                    pixelArt: false,
+                    antialias: true,
+                },
+                scene: [SnakeScene], // Assuming SnakeScene is defined in main1.js
+                parent: 'gameContainer',
+                backgroundColor: '#000',
+            };
+
+            new Phaser.Game(config);
+        }
+    </script>
+
+    <script src="main1.js"></script>
+</body>
+</html>

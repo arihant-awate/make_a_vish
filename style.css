@@ -1,0 +1,118 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+}
+
+#gameContainer {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+
+#scoreContainer {
+    position: absolute;
+    top: var(--score-top, 20px); /* Default top position */
+    right: var(--score-right, 50px); /* Default right position */
+}
+
+#scoreContainer {
+    --score-top: 70px;
+    --score-right: 1230px;
+}
+
+/* Score container */
+#scoreContainer {
+    position: absolute;
+    top: 70px;
+    right: 1230px;
+    color: black; /* Text color set to black */
+    font-size: 55px;
+    font-family: 'Freckle Face', cursive;
+    z-index: 100; /* Ensure it appears above the Phaser game */
+}
+
+
+.overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px; /* Adjust as needed */
+    height:  800px;
+    transition: opacity 0.3s ease;
+    z-index: 15;
+}
+
+
+/* CSS for corner buttons */
+.cornerButton {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 80px; /* Increased size */
+    height: 80px; /* Increased size */
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    z-index: 100; /* Ensure the button is on top of Phaser canvas */
+}
+
+#homeButton {
+    left: 20px;
+    bottom: 110px; /* Adjust offset for the larger size */
+}
+
+.cornerButton img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+#gameControlPanel {
+    position: absolute;
+    display: none;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+#gameMessage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    font-weight: bold;
+    background-image: url("./assets/startscene.png");
+    background-size: cover;
+    border-radius: 10px;
+    margin-bottom: 5px;
+}
+
+#startGame {
+    background-color: #3498DB; /* Modern blue color */
+    color: white;
+    width: 280px;
+    height: 40px;
+    border: none;
+    z-index: 1;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    transition: background-color 0.3s ease; /* Smooth transition effect */
+}
+
+#startGame:hover {
+    background-color: #2980B9; /* Darker blue on hover */
+}

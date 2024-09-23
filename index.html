@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Make a Vish - Game Screen</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="screen1" class="container">
+        <!-- First Screen: start_screen.svg -->
+        <img src="images/start_screen.svg" alt="Start Screen" class="background">
+    </div>
+
+    <div id="screen2" class="container" style="display:none;">
+        <!-- Second Screen: bg_1.svg -->
+        <img src="images/bg_1.svg" alt="Background" class="background" id="backgroundImage">
+        
+        <!-- Invisible Buttons -->
+        <button id="ogButton" class="button-with-image"></button>
+        <button id="goButton" class="button-with-image"></button>
+
+        <!-- Now Visible Link -->
+        <a href="https://arihantawate.in" target="_blank"   id="invisibleLink" class="invisible-button"></a>
+
+        <!-- Background Music -->
+        <audio id="bgMusic" src="sounds/background-music.mp3" loop></audio>
+
+        <!-- Pop Sound -->
+        <audio id="popSound" src="sounds/pop-sound.mp3"></audio>
+    </div>
+
+    <div id="ogScreen" class="container" style="display:none;">
+        <!-- OG Screen: og_screen.svg -->
+        <img src="images/og_screen.svg" alt="OG Screen" class="background">
+    </div>
+
+    <div id="goScreen" class="container" style="display:none;">
+        <!-- GO Screen: go_screen.svg -->
+        <img src="images/go_screen.svg" alt="GO Screen" class="background">
+    </div>
+
+    <script src="main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/phaser@3/dist/phaser.min.js"></script>
+</body>
+</html>

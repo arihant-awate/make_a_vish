@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GO Screen</title>
+    <link rel="stylesheet" href="style1.css">
+    <link href="https://fonts.googleapis.com/css2?family=Freckle+Face&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="goScreen" class="container">
+        <!-- GO Screen: go_screen.svg -->
+        <img src="/mnt/data/og_screen.svg" alt="OG Screen" class="background">
+        <div id="game"></div>
+    </div>
+
+     <!-- Home Button -->
+     <button id="homeButton" class="cornerButton">
+        <img src="./assets/home_icon.svg" alt="Home">
+    </button>
+
+    <!-- Info Button -->
+    <button id="infoButton" class="cornerButton">
+        <img src="./assets/info_icon.svg" alt="Info">
+    </button>
+
+    <script src="https://cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser.js"></script>
+    <script src="main2.js"></script>
+</body>
+</html>
